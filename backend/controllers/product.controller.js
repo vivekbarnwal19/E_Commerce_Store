@@ -41,7 +41,7 @@ export const getFeaturedProducts = async (req , res)=>{
 
 export const createProduct = async (req, res) => {
     try {
-        const{ name , description , price , image , catagory} = req.body;
+        const{ name , description , price , image , category} = req.body;
 
         let cloudinaryResponse = null;
          
@@ -53,7 +53,7 @@ export const createProduct = async (req, res) => {
             name,description,
             price,
             image: cloudinaryResponse ?.secure_url ? cloudinaryResponse.secure_url : "",
-            catagory,
+            category,
         });
         res.status(201).json(product);
     } catch (error) {
