@@ -6,6 +6,8 @@ import LogInPage from "./pages/LogInPage"
 import AdminPage from "./pages/AdminPage"
 import CategoryPage from "./pages/CategoryPage"
 import CartPage from "./pages/CartPage"
+import PurchaseSuccessPage from "./pages/PurchaseSuccessPage"
+import PurchaseCancelPage from "./pages/PurchaseCancelPage"
 
 
 
@@ -16,6 +18,7 @@ import { useUserStore } from "./store/useUserStore"
 import { useEffect } from "react"
 import LoadingSpinner from "./components/LoadingSpinner"
 import { useCartStore } from "./store/useCartStore"
+
 
 function App() {
 
@@ -57,6 +60,8 @@ function App() {
         <Route path="/secret-dashboard" element={user?.role === "admin" ? <AdminPage /> : <Navigate to="/login" /> } />
         <Route path="/category/:category" element={ <CategoryPage /> } />
         <Route path="/cart" element={ user ?  <CartPage /> : <Navigate to='/login' />} />
+        <Route path="/purchase-success" element={user ? <PurchaseSuccessPage /> : <Navigate  to="/login" />} />
+        <Route path="/purchase-cancel" element={user ? <PurchaseCancelPage /> : <Navigate  to="/login" />} />
       </Routes>
     </div>
     <Toaster />
